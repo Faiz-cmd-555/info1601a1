@@ -1,0 +1,393 @@
+// 816049523
+// Assignment 1
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFO 1601 - Assignment 1</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            background: #333333;
+            padding: 15px 30px;
+        }
+        nav a{
+            color: white;
+            text-decoration: none;
+            font: 16px;
+            padding: 10px 15px;
+        }
+        .hero{
+            min-height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1RbDik.img?w=1920&h=1080&m=4&q=79);
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            flex-direction: column;
+        }
+        .hero h1{
+            color: white;
+        }
+        .hero p{
+            color: #f5f5f5;
+        }
+        button{
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        button:hover{
+            opacity: 0.8;
+        }
+        .btn-primary{
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+        }
+        .btn-secondary{
+            background: #6C757D;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+        }
+
+        .card{
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card-header{
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: #000;
+        }
+        .card-body{
+            font-size: 14px;
+            color: #555555;
+            line-height: 1.6;
+        }
+        .card img{
+            max-width: 100%;
+            display: block;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+
+        .flex-container{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .flex-item{
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .badge{
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .badge-empire{
+            background: rgb(10, 103, 10);
+            color: white;
+            font-size: 12px;
+        }
+        .badge-rebel{
+            background: rgb(153, 7, 7);
+            color: white;
+        }
+        .badge-zann{
+            background: rgb(193, 154, 0);
+            color: black;
+        }
+        .badge-success{
+            background: green;
+            color: white;
+        }
+        .badge-danger{
+            background: red;
+            color: white;
+        }
+
+        form{
+            max-width: 600px;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        label{
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333333;
+        }
+        input{
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #cccccc;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        figure{
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #cccccc;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        figure img{
+            max-width: 100%;
+            display: block;
+        }
+
+        figcaption{
+            font-size: 14px;
+            color: #555555;
+            padding: 10px;
+        }
+
+        details{
+            border-radius: 8px;
+            padding 16px;
+            margin-bottom: 12px;
+            background: #f5f5f5;
+        }
+
+        summary{
+            font-weight: bold;
+            cursor: pointer;
+            color: #333333;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px
+        }
+        th{
+            background-color: #333333;
+            color: white;
+            padding: 12px;
+            text-align:left;
+        }
+        td {
+            padding: 12px;
+            text-align:left;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f5f5f5; 
+        }
+        tbody tr:nth-child(odd){
+            background-color: #ffffff;
+        }
+      
+
+        dialog[popover]{
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        footer{
+            background: #222222;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        .white-text{
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+           <h1><span class="white-text">The okay Guide to Empire at War</span></h1>
+        </div>
+        <div>
+            <a href="#">Home</a>
+            <a href="#">Factions</a>
+            <a href="#">Maps</a>
+            <a href="#">Space Units</a>
+            <a href="#">Ground Units</a>
+        </div>
+    </nav>
+
+    <main id="main-container" class="container">
+
+    <header class="hero">
+        <div class="container">
+            <h1>The "Probably Not Best" Empire at War Guide</h1>
+            <p style="margin-bottom: 20px; color: white;">Master the galaxy, one planet at a time.</p>
+            <button class="btn-primary">Explore the Empire</button>
+            <button class="btn-secondary">Arsenal of the Rebellion</button>
+        </div>
+    </header>
+    <br>
+
+    <section class="container">
+        <h2 class="center-text">Main Factions</h2>
+        <div class="flex-container">
+            <div class="flex-item card">
+                <div class="badge badge-empire">Main faction</div>
+                <img src="https://i.ytimg.com/vi/eUD8EytkqhU/maxresdefault.jpg" alt="">
+                <div class="card-header">Galactic empire</div>
+                <div class="card-body">
+                    The manifestion of the Emperors power and aurthority over the galaxy. The Empire is a hard hitting yet slow moving faction, their economy and weapons are more powerful than the rest. However their unists can get eassily overwhelmed.
+                </div>
+
+            </div>
+            <div class="flex-item card">
+                <div class="badge badge-rebel">Main faction</div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Flag_of_the_Rebel_Alliance.svg/1200px-Flag_of_the_Rebel_Alliance.svg.png" alt="">
+                <div class="card-header">Rebel Allaince</div>
+                <div class="card-body">
+                    The freedom fighters, seperatists, and scoundrels with a sense of honour. The rebels fight to retor the Galactic Republic. The rebels have a weak economy and their units are squishy, but their fighters are the best in the game.
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+
+    <section class="container">
+        <h2 class="center-text">Minor Factions</h2>
+        <div class="flex-container">
+            <div class="flex-item card">
+                <div class ="badge badge-zann">Minor faction</div>
+                <img src="https://yt3.googleusercontent.com/ytc/AIdro_npusbPTDWE8qlPTdQxtx_WAmqu_A8XY1RhyRJX3z-Fbg=s900-c-k-c0x00ffffff-no-rj" alt="">
+                <div class="card-header">Zann Consortium</div>
+                <div class="card-body">
+                    The scum of the underworld, the Consortium cares only about credits and spice. Get in there way and they'll space you. The Zaan have the mechanics to steal from other factions (fitting) however their units are limited.
+                </div>
+            </div>
+            <div class="flex-item card">
+                <div class="badge badge-zann">Minor faction</div>
+                <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2021/03/kajidic-hutt-clan-symbol-solo-a-star-wars-story.jpg" alt="">
+                <div class="card-header">Hutts</div>
+                <div class="card-body">
+                    They smell, the look ugly and they have the biggest crime system spread across the galaxy. The Hutts are a non-playable faction, they surve to act as a barrier between the other factions or if your bored they can give you some challenge.
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <h3>Sometimes you get bored of the base game and then that's were the fun begins</h3>
+    <br>
+    <details>
+        <summary>Mods I recommend</summary>
+        <table>
+            <thead>
+                <tr>
+                <th>Mod Name</th>
+                <th>Description</th>
+                <th>Do I recommend</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Awakening of the Rebellion</td>
+                    <td>A mod that completely reworks the original, with new units and gameplay with very good support.</td>
+                    <td><span class="badge badge-success">Yes</span></td>
+                </tr>
+                <tr>
+                    <td>Thrawn's Revenge</td>
+                    <td>A total conversion mod with new units new gameplay and even voicelines constantly being updated this mod is a must try.</td>
+                    <td><span class="badge badge-success">Yes</span></td>
+                </tr>
+                <tr>
+                    <td>Revan's Revenge</td>
+                    <td>Another total conversion with new units and mechanics. However the mod has just released and so content and polising isn't fully completed. Fun but maybe you should wait.</td>
+                    <td><span class="badge badge-danger">No</span></td>
+                </tr>
+                <tr>
+                    <td>Allaince</td>
+                    <td>A mod that add thousands of new units from all eras. However it comes at the cost of no balance for gameplay or support for galactic conquest. Fun only if you like quick battles.</td>
+                    <td><span class="badge badge-danger">No</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </details>
+    <br>
+
+    <section>
+        <h2 class="center-text">Galactic Map</h2>
+        <figure>
+            <img src="https://cdn.shazoo.ru/c1400x625/805195_ucdTvFA_star-wars.jpg" alt="">
+            <figcaption>No this isn't a map of Empire at War</figcaption>
+        </figure>
+    </section>
+
+    <section class="center text" style="margin: 40px 0;">
+        <button popovertarget="info-dialog" class="btn-primary">Advise before modding</button>
+        <dialog id="info-dialog" popover>
+            <div class="card-header">Copy your folder!!!</div>
+            <div class="card-body">
+                <p>1. Before modding your game make sure to copy and save files and any game data files you have to replace.</p>
+                <p>2. Depending on the mod expect alot of crashes.</p>
+            </div>
+            <button class="btn-secondary" onclick="this.parentElement.hidePopover()">Close</button>
+        </dialog>
+    </section>
+
+    <section>
+        <h2 class="center-text">I find you lack of faith concerning</h2>
+        <form class="form">
+            <label for="email">Email Adress</label>
+            <input type="email" id="email" placeholder="empire@war.com">
+            <button class="btn-primary" type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>TM & © Lucasfilm Ltd. All Rights Reserved</p>
+        <p>2026 Empire at War Fan Guide | May the Force be with you.</p>
+    </footer>
+
+    </main>
+
+</body>
+</html>
